@@ -125,6 +125,29 @@
             </div>
         </div>
     </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var forms = [
+                { id: 'starter-signup' },
+                { id: 'pro-signup' },
+                { id: 'enterprise-signup' }
+            ];
+            forms.forEach(function (formInfo) {
+                var form = document.getElementById(formInfo.id);
+                if (form) {
+                    form.onsubmit = function (e) {
+                        e.preventDefault();
+                        var emailInput = form.querySelector("input[type='email']");
+                        if (emailInput && window.inflection && typeof window.inflection.identify === 'function') {
+                            window.inflection.identify(emailInput.value);
+                        }
+                        // Optionally, submit the form via AJAX or show a success message here
+                        // form.submit(); // Uncomment if you want to proceed with submission
+                    };
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

@@ -108,6 +108,22 @@
             </div>
         </div>
     </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var contactForm = document.getElementById('contact-form');
+            if (contactForm) {
+                contactForm.onsubmit = function (e) {
+                    e.preventDefault();
+                    var emailInput = contactForm.querySelector("input[type='email']");
+                    if (emailInput && window.inflection && typeof window.inflection.identify === 'function') {
+                        window.inflection.identify(emailInput.value);
+                    }
+                    // Optionally, submit the form via AJAX or show a success message here
+                    // contactForm.submit(); // Uncomment if you want to proceed with submission
+                };
+            }
+        });
+    </script>
 </body>
 
 </html>
