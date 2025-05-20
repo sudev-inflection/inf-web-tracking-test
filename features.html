@@ -120,8 +120,8 @@
                 demoForm.onsubmit = function (e) {
                     e.preventDefault();
                     var emailInput = demoForm.querySelector("input[type='email']");
-                    if (emailInput && window.inflection && typeof window.inflection.identify === 'function') {
-                        window.inflection.identify(emailInput.value);
+                    if (emailInput && window.staging_inflection && typeof window.staging_inflection.identify === 'function') {
+                        window.staging_inflection.identify(emailInput.value);
                     }
                     // Optionally, submit the form via AJAX or show a success message here
                     // demoForm.submit(); // Uncomment if you want to proceed with submission
