@@ -1,3 +1,7 @@
+// This file is for LOCAL DEVELOPMENT ONLY.
+// It is NOT used in Vercel deployment. Vercel uses api/index.js as the entry point for serverless deployment.
+// You can use this file to run your app locally with `node app.local.js`.
+
 const express = require('express');
 const subdomain = require('express-subdomain');
 const path = require('path');
