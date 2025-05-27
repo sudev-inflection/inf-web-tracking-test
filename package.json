@@ -1,0 +1,22 @@
+{
+  "name": "website_track_test_website",
+  "version": "1.0.0",
+  "description": "A multi-page static website designed for testing website tracking tools and analytics implementations. This website mimics a typical SaaS marketing landing page with various interactive elements and forms that can be used to test tracking functionality.",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "express-ejs-layouts": "^2.5.1",
+    "express-subdomain": "^1.0.5"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}

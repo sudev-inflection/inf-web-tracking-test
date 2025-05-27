@@ -1,0 +1,57 @@
+<header class="hero">
+    <div class="container">
+        <h1>Contact Us</h1>
+        <p>Get in touch with our team for any questions or support.</p>
+    </div>
+</header>
+
+<section class="contact">
+    <div class="container">
+        <div class="contact-grid">
+            <div class="contact-info">
+                <div class="info-item">
+                    <h3>Email</h3>
+                    <p>support@trackflow.com</p>
+                </div>
+                <div class="info-item">
+                    <h3>Phone</h3>
+                    <p>+1 (555) 123-4567</p>
+                </div>
+                <div class="info-item">
+                    <h3>Office</h3>
+                    <p>123 Analytics Street<br>San Francisco, CA 94105</p>
+                </div>
+            </div>
+
+            <div class="contact-form-container">
+                <form class="contact-form" id="contact-form">
+                    <div class="form-group">
+                        <input type="text" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Your Message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var contactForm = document.getElementById('contact-form');
+        if (contactForm) {
+            contactForm.onsubmit = function (e) {
+                e.preventDefault();
+                var emailInput = contactForm.querySelector("input[type='email']");
+                if (emailInput && window.staging_inflection && typeof window.staging_inflection.identify === 'function') {
+                    window.staging_inflection.identify(emailInput.value);
+                }
+            };
+        }
+    });
+</script>

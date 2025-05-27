@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= title %> - TrackFlow
+    </title>
+    <!-- Start of Inflection Embed Code -->
+    <script async src="https://wt.inflectionapp.net/scripts/wt-script.js"></script>
+    <!-- End of Inflection Embed Code -->
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">TrackFlow</div>
+            <ul class="nav-links">
+                <li><a href="<%= baseUrl %>" class="<%= active === 'home' ? 'active' : '' %>">Home</a></li>
+                <li><a href="<%= baseUrl %>/features" class="<%= active === 'features' ? 'active' : '' %>">Features</a>
+                </li>
+                <li><a href="<%= baseUrl %>/pricing" class="<%= active === 'pricing' ? 'active' : '' %>">Pricing</a>
+                </li>
+                <li><a href="<%= baseUrl %>/contact" class="<%= active === 'contact' ? 'active' : '' %>">Contact</a>
+                </li>
+                <li><a href="<%= blogUrl %>" class="<%= active === 'blog' ? 'active' : '' %>">Blog</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <%- body %>
+
+        <footer>
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-section">
+                        <h4>TrackFlow</h4>
+                        <p>Making website analytics simple and actionable.</p>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="<%= baseUrl %>/features">Features</a></li>
+                            <li><a href="<%= baseUrl %>/pricing">Pricing</a></li>
+                            <li><a href="<%= baseUrl %>/contact">Contact</a></li>
+                            <li><a href="<%= blogUrl %>">Blog</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2024 TrackFlow. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+</body>
+
+</html>

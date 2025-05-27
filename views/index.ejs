@@ -1,0 +1,57 @@
+<header class="hero">
+    <div class="container">
+        <h1>Understand Your Website Visitors Better</h1>
+        <p>TrackFlow helps you understand your website visitors' behavior and optimize your site for better conversions.
+        </p>
+        <div class="cta-buttons">
+            <a href="/pricing" class="btn btn-primary">Get Started</a>
+            <a href="/features" class="btn btn-secondary">Learn More</a>
+        </div>
+    </div>
+</header>
+
+<section class="features-preview">
+    <div class="container">
+        <h2>Why Choose TrackFlow?</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <h3>Real-time Analytics</h3>
+                <p>Get instant insights into your website's performance and visitor behavior.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Heat Maps</h3>
+                <p>Visualize where your visitors click and scroll on your website.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Conversion Tracking</h3>
+                <p>Track and optimize your conversion funnels for better results.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="newsletter">
+    <div class="container">
+        <h2>Stay Updated</h2>
+        <p>Subscribe to our newsletter for the latest updates and tips.</p>
+        <form class="newsletter-form" id="newsletter-form">
+            <input type="email" placeholder="Enter your email" required>
+            <button type="submit" class="btn btn-primary">Subscribe</button>
+        </form>
+    </div>
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var newsletterForm = document.getElementById('newsletter-form');
+        if (newsletterForm) {
+            newsletterForm.onsubmit = function (e) {
+                e.preventDefault();
+                var emailInput = newsletterForm.querySelector("input[type='email']");
+                if (emailInput && window.staging_inflection && typeof window.staging_inflection.identify === 'function') {
+                    window.staging_inflection.identify(emailInput.value);
+                }
+            };
+        }
+    });
+</script>
