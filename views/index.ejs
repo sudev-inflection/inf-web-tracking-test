@@ -48,8 +48,8 @@
             newsletterForm.onsubmit = function (e) {
                 e.preventDefault();
                 var emailInput = newsletterForm.querySelector("input[type='email']");
-                if (emailInput && window.staging_inflection && typeof window.staging_inflection.identify === 'function') {
-                    window.staging_inflection.identify(emailInput.value);
+                if (emailInput && window.inflection && typeof window.inflection.identify === 'function') {
+                    window.inflection.identify(emailInput.value);
                 }
             };
         }
