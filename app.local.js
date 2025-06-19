@@ -88,6 +88,13 @@ app.get('/contact', (req, res) => {
     });
 });
 
+app.get('/poll', (req, res) => {
+    res.render('poll', {
+        title: 'Poll',
+        active: 'poll'
+    });
+});
+
 // Error handling
 app.use((req, res) => {
     res.status(404).send('Page not found');

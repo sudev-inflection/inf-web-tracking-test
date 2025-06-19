@@ -1,84 +1,100 @@
-# TrackFlow Test Website
+# Website Tracking Test Website
 
 A multi-page static website designed for testing website tracking tools and analytics implementations. This website mimics a typical SaaS marketing landing page with various interactive elements and forms that can be used to test tracking functionality.
 
 ## Features
 
-- Responsive design that works on all devices
-- Multiple pages with different layouts and content
-- Various forms for testing form submission tracking:
-  - Newsletter signup form
-  - Demo request form
-  - Pricing tier signup forms
-  - Contact form
-- Interactive elements for testing user behavior tracking
-- Clean, modern UI with consistent styling
+- Multi-page static website with a modern SaaS landing page layout
+- Blog subdomain with sample articles
+- Contact forms and interactive elements for testing tracking
+- Responsive design
+- Easy local development setup
+- Vercel deployment support
 
-## Pages
+## Tech Stack
 
-1. **Homepage** (`index.html`)
-   - Hero section with CTA buttons
-   - Features overview
-   - Newsletter signup form
+- Node.js
+- Express.js
+- EJS templating engine
+- Express EJS Layouts
+- Express Subdomain for blog routing
 
-2. **Features** (`features.html`)
-   - Detailed feature descriptions
-   - Demo request form
-   - Feature comparison
+## Prerequisites
 
-3. **Pricing** (`pricing.html`)
-   - Three pricing tiers
-   - Signup forms for each tier
-   - FAQ section
+- Node.js (v14 or higher)
+- npm (v6 or higher)
 
-4. **Contact** (`contact.html`)
-   - Contact information
-   - Contact form
-   - Support options
-
-## Setup
+## Local Development Setup
 
 1. Clone the repository:
    ```bash
-   git clone [repository-url]
+   git clone <repository-url>
+   cd website_track_test_website
    ```
 
-2. Open any of the HTML files in your browser to view the website.
-
-## Testing Website Tracking
-
-This website is designed to help test various aspects of website tracking:
-
-- **Page Views**: Test tracking of page visits across different pages
-- **Form Submissions**: Test form submission tracking with various forms
-- **User Interactions**: Test tracking of button clicks and other interactions
-- **Navigation**: Test tracking of user navigation between pages
-- **Responsive Design**: Test tracking across different device sizes
-
-## Adding Your Tracking Script
-
-To add your tracking script:
-
-1. Open any of the HTML files
-2. Add your tracking script in the `<head>` section:
-   ```html
-   <head>
-       <!-- Your tracking script here -->
-       <script src="path/to/your/tracking.js"></script>
-   </head>
+2. Install dependencies:
+   ```bash
+   npm install
    ```
 
-## Development
+3. Start the development server:
+   ```bash
+   npm run dev
+   ```
 
-The website is built with:
-- HTML5
-- CSS3 (with modern features like Grid and Flexbox)
-- No JavaScript (to keep it simple for testing)
+   This will start the server with nodemon for automatic reloading.
 
-## License
+4. Access the website:
+   - Main site: http://localhost:3000
+   - Blog subdomain: http://blog.localhost:3000
 
-This project is open source and available for testing purposes.
+## Project Structure
+
+```
+├── api/              # Serverless API routes for Vercel deployment
+├── blog/            # Blog content and assets
+├── public/          # Static assets (CSS, JS, images)
+├── views/           # EJS templates
+│   ├── layout.ejs   # Main layout template
+│   └── ...          # Other view templates
+├── app.local.js     # Local development server
+├── package.json     # Project dependencies and scripts
+└── vercel.json      # Vercel deployment configuration
+```
+
+## Available Pages
+
+- Home (`/`)
+- Features (`/features`)
+- Pricing (`/pricing`)
+- Contact (`/contact`)
+- Blog (`/blog`)
+  - Getting Started (`/blog/getting-started`)
+
+## Development Workflow
+
+1. The main application logic is in `app.local.js` for local development
+2. Templates are located in the `views/` directory
+3. Static assets should be placed in the `public/` directory
+4. Blog content is managed through the `blog/` directory
+5. The server automatically handles subdomain routing for the blog
+
+## Deployment
+
+This project is configured for deployment on Vercel. The deployment uses serverless functions defined in the `api/` directory.
+
+To deploy:
+
+1. Push your changes to the repository
+2. Vercel will automatically deploy the changes
+3. The site will be available at your configured domain
 
 ## Contributing
 
-Feel free to fork this repository and modify it for your specific tracking testing needs. 
+1. Create a new branch for your feature
+2. Make your changes
+3. Submit a pull request
+
+## License
+
+ISC 
