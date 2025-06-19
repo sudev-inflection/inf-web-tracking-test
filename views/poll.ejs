@@ -1,0 +1,125 @@
+<header class="hero">
+    <div class="container">
+        <h1>Quick Poll</h1>
+        <p>We'd love to hear your thoughts! Take a moment to share your opinion.</p>
+    </div>
+</header>
+
+<section class="poll">
+    <div class="container">
+        <div class="poll-container">
+            <div class="poll-question">
+                <h2>What's your preferred way to track website analytics?</h2>
+                <p>Help us understand what matters most to you when it comes to website tracking.</p>
+            </div>
+
+            <form class="poll-form" id="poll-form">
+                <div class="poll-options">
+                    <div class="poll-option">
+                        <input type="radio" id="option1" name="poll_answer" value="real-time" required>
+                        <label for="option1">
+                            <span class="option-text">Real-time data and live dashboards</span>
+                            <span class="option-description">See what's happening on your site right now</span>
+                        </label>
+                    </div>
+
+                    <div class="poll-option">
+                        <input type="radio" id="option2" name="poll_answer" value="user-behavior" required>
+                        <label for="option2">
+                            <span class="option-text">User behavior and journey tracking</span>
+                            <span class="option-description">Understand how visitors navigate your site</span>
+                        </label>
+                    </div>
+
+                    <div class="poll-option">
+                        <input type="radio" id="option3" name="poll_answer" value="conversion" required>
+                        <label for="option3">
+                            <span class="option-text">Conversion tracking and goal optimization</span>
+                            <span class="option-description">Focus on turning visitors into customers</span>
+                        </label>
+                    </div>
+
+                    <div class="poll-option">
+                        <input type="radio" id="option4" name="poll_answer" value="performance" required>
+                        <label for="option4">
+                            <span class="option-text">Performance and technical metrics</span>
+                            <span class="option-description">Monitor site speed and technical health</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <input type="email" placeholder="Your Email (optional)" id="poll-email">
+                    <small>We'll send you the poll results if you provide your email</small>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Submit Vote</button>
+            </form>
+
+            <div class="poll-results" id="poll-results" style="display: none;">
+                <h3>Thank you for your vote!</h3>
+                <p>We appreciate your feedback. Your response helps us improve our analytics platform.</p>
+                <div class="results-summary">
+                    <p><strong>Your selection:</strong> <span id="selected-option"></span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var pollForm = document.getElementById('poll-form');
+        var pollResults = document.getElementById('poll-results');
+        var selectedOptionSpan = document.getElementById('selected-option');
+
+        if (pollForm) {
+            pollForm.onsubmit = function (e) {
+                e.preventDefault();
+
+                // Get the selected option
+                var selectedOption = pollForm.querySelector('input[name="poll_answer"]:checked');
+                var emailInput = pollForm.querySelector('#poll-email');
+
+                if (selectedOption) {
+                    // Track the poll submission
+                    if (window.inflection && typeof window.inflection.track === 'function') {
+                        window.inflection.track('Poll Submitted', {
+                            answer: selectedOption.value,
+                            question: 'What\'s your preferred way to track website analytics?'
+                        });
+                    }
+
+                    if (window.staging_inflection && typeof window.staging_inflection.track === 'function') {
+                        window.staging_inflection.track('Poll Submitted', {
+                            answer: selectedOption.value,
+                            question: 'What\'s your preferred way to track website analytics?'
+                        });
+                    }
+
+                    // Identify user if email is provided
+                    if (emailInput && emailInput.value.trim()) {
+                        if (window.inflection && typeof window.inflection.identify === 'function') {
+                            window.inflection.identify(emailInput.value);
+                        }
+                        if (window.staging_inflection && typeof window.staging_inflection.identify === 'function') {
+                            window.staging_inflection.identify(emailInput.value);
+                        }
+                    }
+
+                    // Show results
+                    var optionLabels = {
+                        'real-time': 'Real-time data and live dashboards',
+                        'user-behavior': 'User behavior and journey tracking',
+                        'conversion': 'Conversion tracking and goal optimization',
+                        'performance': 'Performance and technical metrics'
+                    };
+
+                    selectedOptionSpan.textContent = optionLabels[selectedOption.value];
+                    pollForm.style.display = 'none';
+                    pollResults.style.display = 'block';
+                }
+            };
+        }
+    });
+</script>

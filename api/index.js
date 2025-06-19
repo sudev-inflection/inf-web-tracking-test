@@ -13,8 +13,8 @@ app.set('layout', 'layout');
 app.use(express.static(path.join(__dirname, '../public')));
 
 app.use((req, res, next) => {
-    const protocol = req.headers['x-forwarded-proto'] || 'https';
-    const host = req.headers['x-forwarded-host'] || req.headers.host;
+    const protocol = req.headers['x-forwarded-proto'] || req.protocol || 'http';
+    const host = req.headers['x-forwarded-host'] || req.headers.host || req.get('host');
     const cleanHost = host.replace(/^blog\./, '');
     res.locals.baseUrl = `${protocol}://${cleanHost}`;
     if (!host.startsWith('blog.')) {
@@ -26,8 +26,8 @@ app.use((req, res, next) => {
 });
 
 app.use((req, res, next) => {
-    const hostname = req.headers['x-forwarded-host'] || req.headers.host;
-    if (hostname.startsWith('blog.')) {
+    const hostname = req.headers['x-forwarded-host'] || req.headers.host || req.get('host');
+    if (hostname && hostname.startsWith('blog.')) {
         if (req.path === '/') {
             return res.render('blog/index', {
                 title: 'Blog',
@@ -69,6 +69,32 @@ app.get('/contact', (req, res) => {
         title: 'Contact',
         active: 'contact'
     });
+});
+
+app.get('/poll', (req, res) => {
+    try {
+        res.render('poll', {
+            title: 'Poll',
+            active: 'poll'
+        });
+    } catch (error) {
+        console.error('Error rendering poll page:', error);
+        // Fallback to simple HTML response
+        res.send(`
+            <!DOCTYPE html>
+            <html>
+            <head>
+                <title>Poll - TrackFlow</title>
+                <link rel="stylesheet" href="/css/styles.css">
+            </head>
+            <body>
+                <h1>Poll Page Test</h1>
+                <p>This is a test response to see if the route is working.</p>
+                <a href="/">Back to Home</a>
+            </body>
+            </html>
+        `);
+    }
 });
 
 app.use((req, res) => {
