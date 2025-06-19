@@ -13,6 +13,53 @@
     <!-- Start of Inflection Staging Embed Code -->
     <script async src="https://wt.inflectionapp.net/scripts/wt-script.js"></script>
     <!-- End of Inflection Staging Embed Code -->
+
+    <!-- Start of Pendo Embed Code -->
+    <script>
+        (function (apiKey) {
+            (function (p, e, n, d, o) {
+                var v, w, x, y, z; o = p[d] = p[d] || {}; o._q = o._q || [];
+                v = ['initialize', 'identify', 'updateOptions', 'pageLoad', 'track']; for (w = 0, x = v.length; w < x; ++w)(function (m) {
+                    o[m] = o[m] || function () { o._q[m === v[0] ? 'unshift' : 'push']([m].concat([].slice.call(arguments, 0))); };
+                })(v[w]);
+                y = e.createElement(n); y.async = !0; y.src = 'https://cdn.eu.pendo.io/agent/static/' + apiKey + '/pendo.js';
+                z = e.getElementsByTagName(n)[0]; z.parentNode.insertBefore(y, z);
+            })(window, document, 'script', 'pendo');
+
+            function getRandomString(length) {
+                return Math.random().toString(36).substring(2, 2 + length);
+            }
+            function getRandomInt(max) {
+                return Math.floor(Math.random() * max);
+            }
+            function getRandomName() {
+                const names = ["Alex", "Sam", "Jamie", "Taylor", "Jordan", "Morgan", "Casey", "Riley", "Drew", "Skyler"];
+                return names[getRandomInt(names.length)];
+            }
+
+            window.onload = function () {
+                var randomId = 'visitor-' + getRandomString(8);
+                var firstName = getRandomName();
+                var lastName = getRandomName();
+                var email = firstName.toLowerCase() + '.' + lastName.toLowerCase() + getRandomInt(1000) + '@example.com';
+                pendo.initialize({
+                    visitor: {
+                        id: randomId,
+                        email: email,
+                        firstName: firstName,
+                        lastName: lastName,
+                    },
+                    account: {
+                        id: 'account-456',
+                        accountName: 'ExampleCorp',
+                        payingStatus: 'paid',
+                    }
+                });
+            };
+        })("64755e66-d07b-45de-45e3-326a750e01da");
+    </script>
+    <!-- End of Pendo Embed Code -->
+    
     <link rel="stylesheet" href="/css/styles.css">
 </head>
 
