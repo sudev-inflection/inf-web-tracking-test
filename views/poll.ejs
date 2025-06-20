@@ -97,6 +97,13 @@
                         });
                     }
 
+                    // Track with Pendo
+                    if (window.pendo && typeof window.pendo.track === 'function') {
+                        window.pendo.track('Poll Submitted', {
+                            answer: selectedOption.value
+                        });
+                    }
+
                     // Identify user if email is provided
                     if (emailInput && emailInput.value.trim()) {
                         if (window.inflection && typeof window.inflection.identify === 'function') {
