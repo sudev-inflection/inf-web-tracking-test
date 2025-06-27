@@ -6,8 +6,10 @@ const express = require('express');
 const subdomain = require('express-subdomain');
 const path = require('path');
 const expressLayouts = require('express-ejs-layouts');
+const axios = require('axios');
 
 const app = express();
+app.use(express.urlencoded({ extended: true }));
 
 // Set up EJS as the view engine
 app.set('view engine', 'ejs');
@@ -93,6 +95,71 @@ app.get('/poll', (req, res) => {
         title: 'Poll',
         active: 'poll'
     });
+});
+
+app.get('/content', (req, res) => {
+    res.render('content', {
+        title: 'Content',
+        active: 'content'
+    });
+});
+
+app.get('/webinars', (req, res) => {
+    res.render('webinars', {
+        title: 'Webinars',
+        active: 'webinars'
+    });
+});
+
+app.get('/webinars/unlocking-website-analytics', (req, res) => {
+    res.render('webinar-landing', {
+        title: 'Unlocking the Power of Website Analytics',
+        active: 'webinars'
+    });
+});
+
+app.post('/contact', async (req, res) => {
+    const { name, email, message } = req.body;
+    try {
+        await axios.post('https://ingestion.webhook.inflection.io/685e42eb3fe609129ba30c00', {
+            name,
+            email,
+            message
+        });
+        res.render('contact', {
+            title: 'Contact',
+            active: 'contact',
+            success: true
+        });
+    } catch (error) {
+        res.render('contact', {
+            title: 'Contact',
+            active: 'contact',
+            error: 'There was a problem submitting your message. Please try again.'
+        });
+    }
+});
+
+app.post('/webinars/unlocking-website-analytics', async (req, res) => {
+    const { name, email } = req.body;
+    try {
+        await axios.post('https://ingestion.webhook.inflection.io/685e4d07f16cffec6fb304c5', {
+            name,
+            email,
+            webinar: 'Unlocking the Power of Website Analytics'
+        });
+        res.render('webinar-landing', {
+            title: 'Unlocking the Power of Website Analytics',
+            active: 'webinars',
+            success: true
+        });
+    } catch (error) {
+        res.render('webinar-landing', {
+            title: 'Unlocking the Power of Website Analytics',
+            active: 'webinars',
+            error: 'There was a problem submitting your registration. Please try again.'
+        });
+    }
 });
 
 // Error handling
