@@ -1,0 +1,165 @@
+<style>
+body {
+  background: #f8fafc;
+}
+.webinar-landing-hero-bg {
+  background: linear-gradient(120deg, #2563eb 0%, #4f8cff 60%, #f3b199 100%);
+  min-height: 520px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 110px 1rem 0 1rem;
+}
+.webinar-landing-hero-content {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 3.5rem;
+}
+.webinar-landing-hero-content h1 {
+  font-size: 2.8em;
+  font-family: 'Inter', Arial, sans-serif;
+  font-weight: 900;
+  color: #fff;
+  margin-bottom: 0.3em;
+  text-align: center;
+  letter-spacing: -1px;
+  line-height: 1.1;
+}
+.webinar-landing-hero-content .subheadline {
+  font-size: 1.25em;
+  color: #eaf1fb;
+  margin-bottom: 2.2em;
+  text-align: center;
+  font-weight: 400;
+  max-width: 600px;
+}
+.webinar-landing-hero-content .date,
+.webinar-landing-hero-content .presenter {
+  color: #eaf1fb;
+  font-size: 1.1em;
+  margin-bottom: 0.2em;
+  text-align: center;
+}
+.webinar-landing-hero-content .presenter {
+  margin-bottom: 1.2em;
+}
+.webinar-landing-card {
+  background: #fff;
+  max-width: 800px;
+  width: 100%;
+  margin: 2.5em auto 0 auto;
+  border-radius: 18px;
+  box-shadow: 0 8px 32px #2563eb22;
+  padding: 2.5em 2em 2em 2em;
+  display: flex;
+  gap: 2.5em;
+  align-items: flex-start;
+}
+.webinar-landing-info {
+  flex: 1 1 0;
+  min-width: 0;
+}
+.webinar-landing-info h2 {
+  color: #2563eb;
+  font-size: 1.3em;
+  margin-bottom: 0.7em;
+  font-weight: 700;
+}
+.webinar-landing-info p {
+  color: #222;
+  font-size: 1.08em;
+  margin-bottom: 1.2em;
+}
+.webinar-landing-content {
+  flex: 1 1 0;
+  min-width: 0;
+  text-align: left;
+}
+.webinar-landing-content h2 {
+  color: #222;
+  font-size: 1.1em;
+  margin-bottom: 0.7em;
+  font-weight: 700;
+}
+.webinar-landing-content form {
+  margin-top: 0.5em;
+}
+.webinar-landing-content input, .webinar-landing-content button {
+  font-size: 1em;
+  padding: 0.7em 1em;
+  border-radius: 6px;
+  border: 1px solid #e0e7ef;
+  margin-bottom: 1em;
+  width: 100%;
+  box-sizing: border-box;
+}
+.webinar-landing-content button {
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.webinar-landing-content button:hover {
+  background: #1d4ed8;
+}
+.webinar-landing-content .powered {
+  text-align: center;
+  color: #2563eb;
+  font-size: 1em;
+  margin-top: 2em;
+  opacity: 0.7;
+}
+@media (max-width: 900px) {
+  .webinar-landing-card {
+    flex-direction: column;
+    gap: 1.5em;
+    max-width: 98vw;
+    padding: 1.2em 0.5em 1.5em 0.5em;
+  }
+  .webinar-landing-hero-content h1 {
+    font-size: 1.5em;
+  }
+}
+</style>
+<link href="https://fonts.googleapis.com/css?family=Inter:400,600,800&display=swap" rel="stylesheet">
+
+<div class="webinar-landing-hero-bg">
+  <div class="webinar-landing-hero-content">
+    <h1>Unlocking the Power of Website Analytics</h1>
+    <div class="subheadline">Join our exclusive live session to discover advanced tracking strategies, real-world SaaS use cases, and actionable insights to help you make the most of your website analytics. Q&A included!</div>
+    <div class="date">July 25, 2024 &middot; 11:00am PT</div>
+    <div class="presenter">with Priya Sharma, Product Manager</div>
+    <div class="webinar-landing-card">
+      <div class="webinar-landing-info">
+        <h2>What You'll Learn</h2>
+        <p>Discover advanced tracking strategies, real-world use cases for SaaS businesses, and actionable insights to help you make the most of your website analytics. Q&A included!</p>
+        <ul style="color:#2563eb; margin-bottom:1.2em;">
+          <li>How to set up advanced tracking in TrackFlow</li>
+          <li>Best practices for SaaS analytics</li>
+          <li>Live Q&A with our product manager</li>
+        </ul>
+      </div>
+      <div class="webinar-landing-content">
+        <h2>Reserve Your Spot</h2>
+        <% if (typeof success !== 'undefined' && success) { %>
+          <div style="background:#eaf1fb;color:#2563eb;padding:1em 1.5em;border-radius:8px;margin-bottom:1.5em;text-align:center;font-weight:600;">Thank you for registering! We have received your submission.</div>
+        <% } %>
+        <% if (typeof error !== 'undefined' && error) { %>
+          <div style="background:#ffeaea;color:#b91c1c;padding:1em 1.5em;border-radius:8px;margin-bottom:1.5em;text-align:center;font-weight:600;"><%= error %></div>
+        <% } %>
+        <form method="POST" action="/webinars/unlocking-website-analytics">
+          <input type="text" name="name" placeholder="Your Name" required>
+          <input type="email" name="email" placeholder="Your Email" required>
+          <button type="submit">Register for Webinar</button>
+        </form>
+        <div class="powered">Powered by TrackFlow</div>
+      </div>
+    </div>
+  </div>
+</div> 

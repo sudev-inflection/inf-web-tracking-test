@@ -24,15 +24,15 @@
             </div>
 
             <div class="contact-form-container">
-                <form class="contact-form" id="contact-form">
+                <form class="contact-form" id="contact-form" method="POST" action="/contact">
                     <div class="form-group">
-                        <input type="text" placeholder="Your Name" required>
+                        <input type="text" name="name" placeholder="Your Name" required>
                     </div>
                     <div class="form-group">
-                        <input type="email" placeholder="Your Email" required>
+                        <input type="email" name="email" placeholder="Your Email" required>
                     </div>
                     <div class="form-group">
-                        <textarea placeholder="Your Message" rows="5" required></textarea>
+                        <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary">Send Message</button>
                 </form>
@@ -41,12 +41,18 @@
     </div>
 </section>
 
+<% if (typeof success !== 'undefined' && success) { %>
+    <div class="alert alert-success">Thank you for contacting us! We have received your message.</div>
+<% } %>
+<% if (typeof error !== 'undefined' && error) { %>
+    <div class="alert alert-danger"><%= error %></div>
+<% } %>
+
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         var contactForm = document.getElementById('contact-form');
         if (contactForm) {
             contactForm.onsubmit = function (e) {
-                e.preventDefault();
                 var emailInput = contactForm.querySelector("input[type='email']");
                 if (emailInput && window.inflection && typeof window.inflection.identify === 'function') {
                     window.inflection.identify(emailInput.value);

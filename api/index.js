@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const expressLayouts = require('express-ejs-layouts');
 const serverless = require('serverless-http');
+const axios = require('axios');
 
 const app = express();
 
@@ -11,6 +12,7 @@ app.use(expressLayouts);
 app.set('layout', 'layout');
 
 app.use(express.static(path.join(__dirname, '../public')));
+app.use(express.urlencoded({ extended: true }));
 
 app.use((req, res, next) => {
     const protocol = req.headers['x-forwarded-proto'] || req.protocol || 'http';
@@ -94,6 +96,71 @@ app.get('/poll', (req, res) => {
             </body>
             </html>
         `);
+    }
+});
+
+app.get('/content', (req, res) => {
+    res.render('content', {
+        title: 'Content',
+        active: 'content'
+    });
+});
+
+app.get('/webinars', (req, res) => {
+    res.render('webinars', {
+        title: 'Webinars',
+        active: 'webinars'
+    });
+});
+
+app.get('/webinars/unlocking-website-analytics', (req, res) => {
+    res.render('webinar-landing', {
+        title: 'Unlocking the Power of Website Analytics',
+        active: 'webinars'
+    });
+});
+
+app.post('/contact', async (req, res) => {
+    const { name, email, message } = req.body;
+    try {
+        await axios.post('https://ingestion.webhook.inflection.io/685e42eb3fe609129ba30c00', {
+            name,
+            email,
+            message
+        });
+        res.render('contact', {
+            title: 'Contact',
+            active: 'contact',
+            success: true
+        });
+    } catch (error) {
+        res.render('contact', {
+            title: 'Contact',
+            active: 'contact',
+            error: 'There was a problem submitting your message. Please try again.'
+        });
+    }
+});
+
+app.post('/webinars/unlocking-website-analytics', async (req, res) => {
+    const { name, email } = req.body;
+    try {
+        await axios.post('https://ingestion.webhook.inflection.io/685e4d07f16cffec6fb304c5', {
+            name,
+            email,
+            webinar: 'Unlocking the Power of Website Analytics'
+        });
+        res.render('webinar-landing', {
+            title: 'Unlocking the Power of Website Analytics',
+            active: 'webinars',
+            success: true
+        });
+    } catch (error) {
+        res.render('webinar-landing', {
+            title: 'Unlocking the Power of Website Analytics',
+            active: 'webinars',
+            error: 'There was a problem submitting your registration. Please try again.'
+        });
     }
 });
 

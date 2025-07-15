@@ -1,0 +1,291 @@
+<style>
+.webinar-hero {
+  margin-top: 2.5rem;
+  background: linear-gradient(120deg, #2563eb 0%, #4f8cff 60%, #f3b199 100%);
+  padding: 4.5rem 0 3.5rem 0;
+  margin-bottom: 2rem;
+  position: relative;
+  color: #fff;
+  text-align: center;
+}
+.webinar-hero .hero-content {
+  max-width: 600px;
+  margin: 0 auto;
+}
+.webinar-hero .trackflow-logo {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  width: 60px;
+  opacity: 0.12;
+}
+.webinar-hero h1 {
+  font-size: 2.8em;
+  font-family: 'Inter', Arial, sans-serif;
+  margin-bottom: 0.2em;
+  color: #fff;
+}
+.webinar-hero .subtitle {
+  font-size: 1.3em;
+  margin-bottom: 1.2em;
+  color: #eaf1fb;
+}
+.webinar-hero .cta-btn {
+  background: #fff;
+  color: #2563eb;
+  padding: 0.7em 2em;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 1.1em;
+  border: none;
+  box-shadow: 0 2px 8px #0002;
+  transition: background 0.2s, color 0.2s;
+  margin-top: 1em;
+  cursor: pointer;
+}
+.webinar-hero .cta-btn:hover {
+  background: #2563eb;
+  color: #fff;
+}
+.webinar-label {
+  background: #eaf1fb;
+  color: #2563eb;
+  padding: 0.2em 0.7em;
+  border-radius: 4px;
+  font-size: 0.9em;
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+.featured-webinar {
+  background: #fff;
+  padding: 2.2em 2em 2em 2em;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px #0002;
+  display: flex;
+  align-items: center;
+  gap: 2em;
+  margin-bottom: 2.5em;
+  border-left: 8px solid #2563eb;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+}
+.featured-badge {
+  background: #f3b199;
+  color: #fff;
+  font-weight: 700;
+  padding: 0.3em 1em;
+  border-radius: 20px;
+  font-size: 1em;
+  position: absolute;
+  top: -18px;
+  left: 2em;
+  box-shadow: 0 2px 8px #0001;
+}
+.featured-webinar .date {
+  color: #2563eb;
+  font-weight: 600;
+  margin-bottom: 0.5em;
+}
+.featured-webinar .btn {
+  background: #2563eb;
+  color: #fff;
+  padding: 0.6em 1.5em;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 1em;
+  border: none;
+  margin-top: 1em;
+  box-shadow: 0 2px 8px #0001;
+  transition: background 0.2s;
+  cursor: pointer;
+}
+.featured-webinar .btn:hover {
+  background: #1d4ed8;
+}
+.featured-webinar img {
+  width: 200px;
+  border-radius: 14px;
+  box-shadow: 0 2px 8px #0001;
+}
+.webinar-section {
+  background: #f8fafc;
+  padding: 2.5em 0 1.5em 0;
+}
+.webinar-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2.2em;
+  margin-top: 1em;
+}
+.webinar-card {
+  background: #fff;
+  padding: 0;
+  border-radius: 14px;
+  box-shadow: 0 2px 12px #0001;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 420px;
+  border-top: 4px solid #2563eb22;
+  position: relative;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.webinar-card:hover {
+  transform: translateY(-6px) scale(1.025);
+  box-shadow: 0 8px 32px #2563eb22;
+}
+.webinar-card img {
+  width: 100%;
+  height: 170px;
+  object-fit: cover;
+}
+.webinar-card-content {
+  padding: 1.2em 1.5em 1.5em 1.5em;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.webinar-tag {
+  background: #eaf1fb;
+  color: #2563eb;
+  padding: 0.2em 0.6em;
+  border-radius: 3px;
+  font-size: 0.85em;
+  margin-bottom: 0.5em;
+  display: inline-block;
+  font-weight: 600;
+}
+.webinar-card h4 {
+  margin: 0.2em 0 0.5em 0;
+  font-family: 'Inter', Arial, sans-serif;
+}
+.webinar-card .presenter {
+  color: #2563eb;
+  font-size: 0.98em;
+  font-weight: 500;
+  margin-bottom: 0.2em;
+}
+.webinar-card .date {
+  color: #888;
+  font-size: 0.93em;
+  margin-bottom: 0.5em;
+}
+.webinar-card a.btn {
+  margin-top: auto;
+  background: #2563eb;
+  color: #fff;
+  padding: 0.5em 1.2em;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.2s;
+  display: inline-block;
+  font-family: 'Inter', Arial, sans-serif;
+  border: none;
+}
+.webinar-card a.btn:hover {
+  background: #1d4ed8;
+}
+.webinar-card .trackflow-watermark {
+  position: absolute;
+  bottom: 10px;
+  right: 12px;
+  width: 28px;
+  opacity: 0.13;
+}
+.webinars-footer {
+  text-align: center;
+  margin: 3em 0 1em 0;
+  color: #2563eb;
+  font-weight: 500;
+  font-size: 1.1em;
+  letter-spacing: 1px;
+  opacity: 0.7;
+}
+</style>
+
+<link href="https://fonts.googleapis.com/css?family=Inter:400,600&display=swap" rel="stylesheet">
+
+<div class="webinar-hero">
+  <div class="hero-content">
+    <img src="https://static.thenounproject.com/png/3437692-200.png" class="trackflow-logo" alt="TrackFlow Logo" />
+    <h1>TrackFlow Webinars</h1>
+    <div class="subtitle">Live and on-demand webinars to help you master website analytics and grow your SaaS business.</div>
+    <button class="cta-btn">Register for Upcoming Webinar</button>
+  </div>
+</div>
+
+<div class="featured-webinar">
+  <span class="featured-badge">Featured</span>
+  <div style="flex:2;">
+    <div class="date">July 25, 2024 &middot; 11:00am PT</div>
+    <h2 style="font-family:'Inter',Arial,sans-serif;">Unlocking the Power of Website Analytics</h2>
+    <div class="presenter">with Priya Sharma, Product Manager</div>
+    <p>Join our lead product manager as we explore advanced tracking strategies and real-world use cases for SaaS businesses. Q&A included!</p>
+    <button class="btn" onclick="window.location='/webinars/unlocking-website-analytics'">Register</button>
+  </div>
+  <div style="flex:1;text-align:center;">
+    <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=400&q=80" alt="Webinar">
+  </div>
+</div>
+
+<div class="webinar-section">
+  <div class="container">
+    <h3 style="margin-top:0;font-family:'Inter',Arial,sans-serif;">All Webinars</h3>
+    <div class="webinar-grid">
+      <div class="webinar-card">
+        <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=600&q=80" alt="Getting Started">
+        <div class="webinar-card-content">
+          <span class="webinar-tag">REPLAY</span>
+          <div class="presenter">with Alex Kim</div>
+          <div class="date">June 10, 2024</div>
+          <h4>Getting Started with TrackFlow</h4>
+          <p>Learn the basics of setting up tracking and dashboards in TrackFlow. Perfect for new users and marketers.</p>
+          <a href="#" class="btn">Watch Replay</a>
+        </div>
+        <img src="https://static.thenounproject.com/png/3437692-200.png" class="trackflow-watermark" alt="TrackFlow watermark" />
+      </div>
+      <div class="webinar-card">
+        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=80" alt="Advanced Tracking">
+        <div class="webinar-card-content">
+          <span class="webinar-tag">REPLAY</span>
+          <div class="presenter">with Jamie Lee</div>
+          <div class="date">May 22, 2024</div>
+          <h4>Advanced Tracking Techniques</h4>
+          <p>Deep dive into custom events, funnels, and user segmentation. Get actionable tips for marketers and product teams.</p>
+          <a href="#" class="btn">Watch Replay</a>
+        </div>
+        <img src="https://static.thenounproject.com/png/3437692-200.png" class="trackflow-watermark" alt="TrackFlow watermark" />
+      </div>
+      <div class="webinar-card">
+        <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=600&q=80" alt="Q&A with Experts">
+        <div class="webinar-card-content">
+          <span class="webinar-tag">REPLAY</span>
+          <div class="presenter">with Dr. Samir Patel</div>
+          <div class="date">April 15, 2024</div>
+          <h4>Q&A with Analytics Experts</h4>
+          <p>Our team answers your toughest questions about analytics and tracking. Bring your marketing challenges!</p>
+          <a href="#" class="btn">Watch Replay</a>
+        </div>
+        <img src="https://static.thenounproject.com/png/3437692-200.png" class="trackflow-watermark" alt="TrackFlow watermark" />
+      </div>
+      <div class="webinar-card">
+        <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80" alt="Optimizing SaaS Funnels">
+        <div class="webinar-card-content">
+          <span class="webinar-tag">REPLAY</span>
+          <div class="presenter">with Maria Gomez</div>
+          <div class="date">March 30, 2024</div>
+          <h4>Optimizing SaaS Funnels</h4>
+          <p>Best practices for tracking and improving your SaaS conversion funnels. Marketers will love these insights!</p>
+          <a href="#" class="btn">Watch Replay</a>
+        </div>
+        <img src="https://static.thenounproject.com/png/3437692-200.png" class="trackflow-watermark" alt="TrackFlow watermark" />
+      </div>
+    </div>
+    <div class="webinars-footer">
+      Powered by TrackFlow &mdash; Making website analytics simple and actionable.
+    </div>
+  </div>
+</div> 
