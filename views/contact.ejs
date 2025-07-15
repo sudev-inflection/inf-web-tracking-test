@@ -54,6 +54,9 @@
                 if (emailInput && window.staging_inflection && typeof window.staging_inflection.identify === 'function') {
                     window.staging_inflection.identify(emailInput.value);
                 }
+                if (emailInput && window.preprod_inflection && typeof window.preprod_inflection.identify === 'function') {
+                    window.preprod_inflection.identify(emailInput.value);
+                }
             };
         }
     });

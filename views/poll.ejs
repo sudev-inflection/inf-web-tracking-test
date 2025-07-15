@@ -97,6 +97,13 @@
                         });
                     }
 
+                    if (window.preprod_inflection && typeof window.preprod_inflection.track === 'function') {
+                        window.preprod_inflection.track('Poll Submitted', {
+                            answer: selectedOption.value,
+                            question: 'What\'s your preferred way to track website analytics?'
+                        });
+                    }
+
                     // Track with Pendo
                     if (window.pendo && typeof window.pendo.track === 'function') {
                         window.pendo.track('Poll Submitted', {
@@ -111,6 +118,9 @@
                         }
                         if (window.staging_inflection && typeof window.staging_inflection.identify === 'function') {
                             window.staging_inflection.identify(emailInput.value);
+                        }
+                        if (window.preprod_inflection && typeof window.preprod_inflection.identify === 'function') {
+                            window.preprod_inflection.identify(emailInput.value);
                         }
                     }
 
